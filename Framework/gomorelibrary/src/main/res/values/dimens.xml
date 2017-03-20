@@ -10,4 +10,9 @@
     <dimen name="pickerview_topbar_title_textsize">18sp</dimen>
     <!-- 选项文字大小 需要配合 bools.xml 的 pickerview_customTextSize 为 true 才有效果-->
     <dimen name="pickerview_textsize">20sp</dimen>
+
+
+    <dimen name="alert_width">290dp</dimen>
+    <dimen name="common_circle_width">3dp</dimen>
+    <dimen name="progress_circle_radius">34dp</dimen>
 </resources>
