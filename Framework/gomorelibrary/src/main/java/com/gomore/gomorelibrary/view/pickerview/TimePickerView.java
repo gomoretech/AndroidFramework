@@ -1,7 +1,6 @@
 package com.gomore.gomorelibrary.view.pickerview;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -52,13 +51,13 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
     private int Size_Title;//标题字体大小
     private int Size_Content;//内容字体大小
 
-    private Date date ;//当前选中时间
+    private Date date;//当前选中时间
     private int startYear;//开始年份
     private int endYear;//结尾年份
     private boolean cyclic;//是否循环
     private boolean cancelable;//是否能取消
 
-    private String label_year, label_month,  label_day,  label_hours,  label_mins, label_seconds;
+    private String label_year, label_month, label_day, label_hours, label_mins, label_seconds;
 
     private static final String TAG_SUBMIT = "submit";
     private static final String TAG_CANCEL = "cancel";
@@ -119,13 +118,14 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         private int Size_Submit_Cancel = 17;//确定取消按钮大小
         private int Size_Title = 18;//标题字体大小
         private int Size_Content = 18;//内容字体大小
-        private Date date ;//当前选中时间
+        private Date date;//当前选中时间
         private int startYear;//开始年份
         private int endYear;//结尾年份
         private boolean cyclic = false;//是否循环
         private boolean cancelable = true;//是否能取消
 
-        private String label_year, label_month,  label_day,  label_hours,  label_mins, label_seconds;//单位
+        private String label_year, label_month, label_day, label_hours, label_mins, label_seconds;//单位
+
         //Required
         public Builder(Context context, OnTimeSelectListener listener) {
             this.context = context;
@@ -133,74 +133,77 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         }
 
         //Option
-        public Builder setType(Type type){
+        public Builder setType(Type type) {
             this.type = type;
             return this;
         }
 
-        public Builder gravity(int gravity){
+        public Builder gravity(int gravity) {
             this.gravity = gravity;
             return this;
         }
 
-        public Builder setSubmitText(String Str_Cancel){
+        public Builder setSubmitText(String Str_Cancel) {
             this.Str_Submit = Str_Cancel;
             return this;
         }
 
-        public Builder setCancelText(String Str_Cancel){
+        public Builder setCancelText(String Str_Cancel) {
             this.Str_Cancel = Str_Cancel;
             return this;
         }
 
-        public Builder setTitleText(String Str_Title){
+        public Builder setTitleText(String Str_Title) {
             this.Str_Title = Str_Title;
             return this;
         }
 
-        public Builder setSubmitColor(int Color_Submit){
+        public Builder setSubmitColor(int Color_Submit) {
             this.Color_Submit = Color_Submit;
             return this;
         }
 
-        public Builder setCancelColor(int Color_Cancel){
+        public Builder setCancelColor(int Color_Cancel) {
             this.Color_Cancel = Color_Cancel;
             return this;
         }
 
-        public Builder setBgColor(int Color_Background_Wheel){
+        public Builder setBgColor(int Color_Background_Wheel) {
             this.Color_Background_Wheel = Color_Background_Wheel;
             return this;
         }
-        public Builder setTitleBgColor(int Color_Background_Title){
+
+        public Builder setTitleBgColor(int Color_Background_Title) {
             this.Color_Background_Title = Color_Background_Title;
             return this;
         }
 
-        public Builder setTitleColor(int Color_Title){
+        public Builder setTitleColor(int Color_Title) {
             this.Color_Title = Color_Title;
             return this;
         }
 
-        public Builder setSubCalSize(int Size_Submit_Cancel){
+        public Builder setSubCalSize(int Size_Submit_Cancel) {
             this.Size_Submit_Cancel = Size_Submit_Cancel;
             return this;
         }
 
-        public Builder setTitleSize(int Size_Title){
+        public Builder setTitleSize(int Size_Title) {
             this.Size_Title = Size_Title;
             return this;
         }
-        public Builder setContentSize(int Size_Content){
+
+        public Builder setContentSize(int Size_Content) {
             this.Size_Content = Size_Content;
             return this;
         }
-        public Builder setDate(Date date){
+
+        public Builder setDate(Date date) {
             this.date = date;
             return this;
         }
 
-        public Builder setRange(int startYear,int endYear){
+        public Builder setRange(int startYear, int endYear) {
             this.startYear = startYear;
             this.endYear = endYear;
             return this;
@@ -225,7 +228,8 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
             this.label_seconds = label_seconds;
             return this;
         }
-        public TimePickerView build(){
+
+        public TimePickerView build() {
             return new TimePickerView(this);
         }
     }
@@ -249,14 +253,14 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         btnCancel.setOnClickListener(this);
 
         //设置文字
-        btnSubmit.setText(TextUtils.isEmpty(Str_Submit)?context.getResources().getString(R.string.pickerview_submit):Str_Submit);
-        btnCancel.setText(TextUtils.isEmpty(Str_Cancel)?context.getResources().getString(R.string.pickerview_cancel):Str_Cancel);
-        tvTitle.setText(TextUtils.isEmpty(Str_Title)?"":Str_Title);//默认为空
+        btnSubmit.setText(TextUtils.isEmpty(Str_Submit) ? context.getResources().getString(R.string.pickerview_submit) : Str_Submit);
+        btnCancel.setText(TextUtils.isEmpty(Str_Cancel) ? context.getResources().getString(R.string.pickerview_cancel) : Str_Cancel);
+        tvTitle.setText(TextUtils.isEmpty(Str_Title) ? "" : Str_Title);//默认为空
 
         //设置文字颜色
-        btnSubmit.setTextColor(Color_Submit==0?ContextCompat.getColor(context, R.color.pickerview_timebtn_nor):Color_Submit);
-        btnCancel.setTextColor(Color_Cancel==0?ContextCompat.getColor(context, R.color.pickerview_timebtn_nor):Color_Cancel);
-        tvTitle.setTextColor(Color_Title==0?ContextCompat.getColor(context, R.color.pickerview_topbar_title):Color_Title);
+        btnSubmit.setTextColor(Color_Submit == 0 ? context.getResources().getColor(R.color.pickerview_timebtn_nor) : Color_Submit);
+        btnCancel.setTextColor(Color_Cancel == 0 ? context.getResources().getColor(R.color.pickerview_timebtn_nor) : Color_Cancel);
+        tvTitle.setTextColor(Color_Title == 0 ? context.getResources().getColor(R.color.pickerview_topbar_title) : Color_Title);
 
         //设置文字大小
         btnSubmit.setTextSize(Size_Submit_Cancel);
@@ -267,16 +271,16 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         LinearLayout timePickerView = (LinearLayout) findViewById(R.id.timepicker);
 
         RelativeLayout rv_top_bar = (RelativeLayout) findViewById(R.id.rv_topbar);
-        rv_top_bar.setBackgroundColor(Color_Background_Title==0?ContextCompat.getColor(context, R.color.pickerview_bg_topbar):Color_Background_Title);
-        timePickerView.setBackgroundColor(Color_Background_Wheel==0?ContextCompat.getColor(context, R.color.bgColor_default):Color_Background_Wheel);
+        rv_top_bar.setBackgroundColor(Color_Background_Title == 0 ? context.getResources().getColor(R.color.pickerview_bg_topbar) : Color_Background_Title);
+        timePickerView.setBackgroundColor(Color_Background_Wheel == 0 ? context.getResources().getColor(R.color.bgColor_default) : Color_Background_Wheel);
 
-        wheelTime = new WheelTime(timePickerView, type, gravity,Size_Content);
+        wheelTime = new WheelTime(timePickerView, type, gravity, Size_Content);
 
-        if (startYear!=0&&endYear!=0&&startYear<=endYear){
+        if (startYear != 0 && endYear != 0 && startYear <= endYear) {
             setRange();
         }
         setTime();
-        wheelTime.setLabels(label_year,label_month,label_day,label_hours,label_mins,label_seconds);
+        wheelTime.setLabels(label_year, label_month, label_day, label_hours, label_mins, label_seconds);
         setOutSideCancelable(cancelable);
         wheelTime.setCyclic(cyclic);
     }
@@ -295,10 +299,9 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
      */
     private void setTime() {
         Calendar calendar = Calendar.getInstance();
-        if (date == null){
+        if (date == null) {
             calendar.setTimeInMillis(System.currentTimeMillis());
-        }
-        else{
+        } else {
             calendar.setTime(date);
         }
 
@@ -321,7 +324,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
             if (timeSelectListener != null) {
                 try {
                     Date date = WheelTime.dateFormat.parse(wheelTime.getTime());
-                    timeSelectListener.onTimeSelect(date,v);
+                    timeSelectListener.onTimeSelect(date, v);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
