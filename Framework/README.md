@@ -18,7 +18,7 @@
 
 2.引用比较酷炫的SweetAlertDialog对话框
 
-——USage
+——Usage
 
     SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
     pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
