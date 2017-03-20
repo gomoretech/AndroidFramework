@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Handler;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -116,10 +115,9 @@ public class WheelView extends View {
 
     public WheelView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        textColorOut = ContextCompat.getColor(context, R.color.pickerview_wheelview_textcolor_out);
-        textColorCenter = ContextCompat.getColor(context,R.color.pickerview_wheelview_textcolor_center);
-        dividerColor = ContextCompat.getColor(context,R.color.pickerview_wheelview_textcolor_out);
-
+        textColorOut = context.getResources().getColor(R.color.pickerview_wheelview_textcolor_out);
+        textColorCenter = context.getResources().getColor(R.color.pickerview_wheelview_textcolor_center);
+        dividerColor = context.getResources().getColor(R.color.pickerview_wheelview_textcolor_out);
         textSize = getResources().getDimensionPixelSize(R.dimen.pickerview_textsize);//默认大小
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.pickerview, 0, 0);
@@ -260,7 +258,7 @@ public class WheelView extends View {
     }
 
     public final void setTextSize(float size) {
-        if (size > 0.0F ) {
+        if (size > 0.0F) {
             textSize = (int) (context.getResources().getDisplayMetrics().density * size);
             paintOuterText.setTextSize(textSize);
             paintCenterText.setTextSize(textSize);
@@ -310,7 +308,7 @@ public class WheelView extends View {
             //滚动中实际的预选中的item(即经过了中间位置的item) ＝ 滑动前的位置 ＋ 滑动相对位置
             preCurrentIndex = initPosition + change % adapter.getItemsCount();
         } catch (ArithmeticException e) {
-            Log.e("WheelView","出错了！adapter.getItemsCount() == 0，联动数据不匹配");
+            Log.e("WheelView", "出错了！adapter.getItemsCount() == 0，联动数据不匹配");
         }
         if (!isLoop) {//不循环的情况
             if (preCurrentIndex < 0) {

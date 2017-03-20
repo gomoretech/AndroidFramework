@@ -235,7 +235,7 @@ public class WheelTime {
     /**
      * 设置是否循环滚动
      *
-     * @param cyclic
+     * @param cyclic 是否循环滚动
      */
     public void setCyclic(boolean cyclic) {
         wv_year.setCyclic(cyclic);
