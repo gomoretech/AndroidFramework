@@ -43,4 +43,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.pnikosis:materialish-progress:1.7'
+
+    //gradlew clean build bintrayUpload -PbintrayUser=smilefei -PbintrayKey=BINTRAY_KEY -PdryRun=false
 }
