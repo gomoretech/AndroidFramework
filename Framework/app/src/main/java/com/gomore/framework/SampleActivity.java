@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 
+import com.gomore.gomorelibrary.utils.DialogUtils;
 import com.gomore.gomorelibrary.view.sweetdialog.SweetAlertDialog;
 
 
@@ -16,6 +17,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_activity);
+        findViewById(R.id.test_dialog).setOnClickListener(this);
         findViewById(R.id.basic_test).setOnClickListener(this);
         findViewById(R.id.under_text_test).setOnClickListener(this);
         findViewById(R.id.error_text_test).setOnClickListener(this);
@@ -29,6 +31,26 @@ public class SampleActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.test_dialog:
+                DialogUtils.confirmDialog(this, "测试", "这个对话框好吗？", "不好", "好", new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        DialogUtils.closeLoadingDialog();
+                        DialogUtils.errorDialog(SampleActivity.this, "你真的low爆了!", "呵呵");
+                    }
+                }, new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        sweetAlertDialog.setTitleText("帅!")
+                                .setContentText("你真的帅爆了!")
+                                .setConfirmText("OK")
+                                .showCancelButton(false)
+                                .setConfirmClickListener(null)
+                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                    }
+                }, SweetAlertDialog.WARNING_TYPE);
+                break;
+
             case R.id.basic_test:
                 // default title "Here's a message!"
                 SweetAlertDialog sd = new SweetAlertDialog(this);
@@ -59,15 +81,15 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                         .setContentText("Won't be able to recover this file!")
                         .setConfirmText("Yes,delete it!")
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
-                            // reuse previous dialog instance
-                            sDialog.setTitleText("Deleted!")
-                                    .setContentText("Your imaginary file has been deleted!")
-                                    .setConfirmText("OK")
-                                    .setConfirmClickListener(null)
-                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        }
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                // reuse previous dialog instance
+                                sDialog.setTitleText("Deleted!")
+                                        .setContentText("Your imaginary file has been deleted!")
+                                        .setConfirmText("OK")
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            }
                         })
                         .show();
                 break;
@@ -77,7 +99,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                         .setContentText("Won't be able to recover this file!")
                         .setCancelText("No,cancel plx!")
                         .setConfirmText("Yes,delete it!")
-                        .showCancelButton(true)
+//                        .showCancelButton(true)
                         .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
@@ -129,7 +151,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                     public void onTick(long millisUntilFinished) {
                         // you can change the progress bar color by ProgressHelper every 800 millis
                         i++;
-                        switch (i){
+                        switch (i) {
                             case 0:
                                 pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.blue_btn_bg_color));
                                 break;
