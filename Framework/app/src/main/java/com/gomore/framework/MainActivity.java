@@ -35,18 +35,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
         initOptionData();
         initOptionPicker();
 
-        tvTime=(Button) findViewById(R.id.tvTime);
-        tvOptions=(Button) findViewById(R.id.tvOptions);
+        tvTime = (Button) findViewById(R.id.tvTime);
+        tvOptions = (Button) findViewById(R.id.tvOptions);
         tvTime.setOnClickListener(this);
         tvOptions.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId()==R.id.tvTime && pvTime!=null){
+        if (v.getId() == R.id.tvTime && pvTime != null) {
             pvTime.show(); //弹出时间选择器
-        }
-        else if (v.getId()==R.id.tvOptions && pvOptions!=null){
+        } else if (v.getId() == R.id.tvOptions && pvOptions != null) {
             pvOptions.show(); //弹出时间选择器
         }
     }
@@ -78,8 +77,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 .setDate(new Date())// default system*/
 //                .setTitleBgColor(0xFF333333)//标题背景颜色 Night mode
 //                .setBgColor(0xFF000000)//滚轮背景颜色 Night mode
-                .setLabel("年","月","日","时","分","秒")
+                .setLabel("年", "月", "日", "时", "分", "秒")
                 .build();
+
     }
 
     private String getTime(Date date) {//可根据需要自行截取数据显示
@@ -90,23 +90,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private void initOptionData() {
 
         //选项1
-        options1Items.add(new ProvinceBean(0,"广东","描述部分","其他数据"));
-        options1Items.add(new ProvinceBean(1,"湖南","描述部分","其他数据"));
-        options1Items.add(new ProvinceBean(2,"广西","描述部分","其他数据"));
+        options1Items.add(new ProvinceBean(0, "广东", "描述部分", "其他数据"));
+        options1Items.add(new ProvinceBean(1, "湖南", "描述部分", "其他数据"));
+        options1Items.add(new ProvinceBean(2, "广西", "描述部分", "其他数据"));
 
         //选项2
-        ArrayList<String> options2Items_01=new ArrayList<>();
+        ArrayList<String> options2Items_01 = new ArrayList<>();
         options2Items_01.add("广州");
         options2Items_01.add("佛山");
         options2Items_01.add("东莞");
         options2Items_01.add("阳江");
         options2Items_01.add("珠海");
-        ArrayList<String> options2Items_02=new ArrayList<>();
+        ArrayList<String> options2Items_02 = new ArrayList<>();
         options2Items_02.add("长沙");
         options2Items_02.add("岳阳");
         options2Items_02.add("株洲");
         options2Items_02.add("衡阳");
-        ArrayList<String> options2Items_03=new ArrayList<>();
+        ArrayList<String> options2Items_03 = new ArrayList<>();
         options2Items_03.add("桂林");
         options2Items_03.add("玉林");
         options2Items.add(options2Items_01);
@@ -119,7 +119,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         ArrayList<ArrayList<IPickerViewData>> options3Items_03 = new ArrayList<>();
 
         //广东的地区
-        ArrayList<IPickerViewData> options3Items_01_01=new ArrayList<>();
+        ArrayList<IPickerViewData> options3Items_01_01 = new ArrayList<>();
         options3Items_01_01.add(new PickerViewData("天河"));
         options3Items_01_01.add(new PickerViewData("海珠"));
         options3Items_01_01.add(new PickerViewData("越秀"));
@@ -129,25 +129,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
         options3Items_01_01.add(new PickerViewData("萝岗"));
         options3Items_01.add(options3Items_01_01);
 
-        ArrayList<IPickerViewData> options3Items_01_02=new ArrayList<>();
+        ArrayList<IPickerViewData> options3Items_01_02 = new ArrayList<>();
         options3Items_01_02.add(new PickerViewData("南海"));
         options3Items_01_02.add(new PickerViewData("高明"));
         options3Items_01_02.add(new PickerViewData("禅城"));
         options3Items_01_02.add(new PickerViewData("桂城"));
         options3Items_01.add(options3Items_01_02);
 
-        ArrayList<IPickerViewData> options3Items_01_03=new ArrayList<>();
+        ArrayList<IPickerViewData> options3Items_01_03 = new ArrayList<>();
         options3Items_01_03.add(new PickerViewData("其他"));
         options3Items_01_03.add(new PickerViewData("常平"));
         options3Items_01_03.add(new PickerViewData("虎门"));
         options3Items_01.add(options3Items_01_03);
 
-        ArrayList<IPickerViewData> options3Items_01_04=new ArrayList<>();
+        ArrayList<IPickerViewData> options3Items_01_04 = new ArrayList<>();
         options3Items_01_04.add(new PickerViewData("其他"));
         options3Items_01_04.add(new PickerViewData("其他"));
         options3Items_01_04.add(new PickerViewData("其他"));
         options3Items_01.add(options3Items_01_04);
-        ArrayList<IPickerViewData> options3Items_01_05=new ArrayList<>();
+        ArrayList<IPickerViewData> options3Items_01_05 = new ArrayList<>();
 
         options3Items_01_05.add(new PickerViewData("其他1"));
         options3Items_01_05.add(new PickerViewData("其他2"));
@@ -155,25 +155,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
         //湖南的地区
-        ArrayList<IPickerViewData> options3Items_02_01=new ArrayList<>();
+        ArrayList<IPickerViewData> options3Items_02_01 = new ArrayList<>();
         options3Items_02_01.add(new PickerViewData("长沙1"));
         options3Items_02_01.add(new PickerViewData("长沙2"));
         options3Items_02_01.add(new PickerViewData("长沙3"));
         options3Items_02.add(options3Items_02_01);
 
-        ArrayList<IPickerViewData> options3Items_02_02=new ArrayList<>();
+        ArrayList<IPickerViewData> options3Items_02_02 = new ArrayList<>();
         options3Items_02_02.add(new PickerViewData("岳阳1"));
         options3Items_02_02.add(new PickerViewData("岳阳2"));
         options3Items_02_02.add(new PickerViewData("岳阳3"));
         options3Items_02.add(options3Items_02_02);
 
-        ArrayList<IPickerViewData> options3Items_02_03=new ArrayList<>();
+        ArrayList<IPickerViewData> options3Items_02_03 = new ArrayList<>();
         options3Items_02_03.add(new PickerViewData("株洲1"));
         options3Items_02_03.add(new PickerViewData("株洲2"));
         options3Items_02_03.add(new PickerViewData("株洲3"));
         options3Items_02.add(options3Items_02_03);
 
-        ArrayList<IPickerViewData> options3Items_02_04=new ArrayList<>();
+        ArrayList<IPickerViewData> options3Items_02_04 = new ArrayList<>();
         options3Items_02_04.add(new PickerViewData("衡阳1"));
         options3Items_02_04.add(new PickerViewData("衡阳2"));
         options3Items_02_04.add(new PickerViewData("衡阳3"));
@@ -181,11 +181,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
         //广西的地区
-        ArrayList<IPickerViewData> options3Items_03_01=new ArrayList<>();
+        ArrayList<IPickerViewData> options3Items_03_01 = new ArrayList<>();
         options3Items_03_01.add(new PickerViewData("阳朔"));
         options3Items_03.add(options3Items_03_01);
 
-        ArrayList<IPickerViewData> options3Items_03_02=new ArrayList<>();
+        ArrayList<IPickerViewData> options3Items_03_02 = new ArrayList<>();
         options3Items_03_02.add(new PickerViewData("北流"));
         options3Items_03.add(options3Items_03_02);
 
@@ -197,11 +197,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
 
-
     private void initOptionPicker() {//条件选择器初始化
-        pvOptions = new  OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
+        pvOptions = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
             @Override
-            public void onOptionsSelect(int options1, int option2, int options3 ,View v) {
+            public void onOptionsSelect(int options1, int option2, int options3, View v) {
                 //返回的分别是三个级别的选中位置
                 String tx = options1Items.get(options1).getPickerViewText()
                         + options2Items.get(options1).get(option2)
@@ -227,7 +226,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 .setBgColor(0xFF000000)//滚轮背景颜色 Night mode*/
                 .setSubCalSize(18)
                 .setContentTextSize(20)
-                .setSelectOptions(0,1,2)  //设置默认选中项
+                .setSelectOptions(0, 1, 2)  //设置默认选中项
                 .build();
 
         pvOptions.setPicker(options1Items, options2Items, options3Items);
@@ -237,11 +236,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if(pvTime.isShowing()){
+            if (pvTime.isShowing()) {
                 pvTime.dismiss();
                 return true;
             }
-            if(pvOptions.isShowing()){
+            if (pvOptions.isShowing()) {
                 pvOptions.dismiss();
                 return true;
             }

@@ -27,3 +27,18 @@
     pDialog.show();
 
 使用详情具体见：(https://github.com/pedant/sweet-alert-dialog)
+
+
+3.新增工具模块
+
+    ——DateUtil: 日期处理工具
+    ——StringUtils: 字符串处理工具类
+    ——DialogUtils: 提示对话框
+    ——ProgressUtils: 加载对话框
+    ——TimePickerUtils: 仿IOS模式的时间选择框工具类
+    ——MD5Util: MD5加密工具
+    ——DensityUtil: 手机屏幕尺寸处理工具
+    ——FileTools: 文件读写工具
+    ——JackJsonUtils: 实体model何Json的转化工具
+    ——NetSpeed: 实时网速监测工具
+    ——SystemTool: 系统信息工具类

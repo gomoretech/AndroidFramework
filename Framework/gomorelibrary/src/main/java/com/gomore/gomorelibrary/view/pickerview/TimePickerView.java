@@ -56,6 +56,8 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
     private int endYear;//结尾年份
     private boolean cyclic;//是否循环
     private boolean cancelable;//是否能取消
+    private boolean confirmCancelable = true;//点击确认按钮是否能取消
+
 
     private String label_year, label_month, label_day, label_hours, label_mins, label_seconds;
 
@@ -84,6 +86,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         this.date = builder.date;
         this.cyclic = builder.cyclic;
         this.cancelable = builder.cancelable;
+        this.confirmCancelable = builder.confirmCancelable;
         this.label_year = builder.label_year;
         this.label_month = builder.label_month;
         this.label_day = builder.label_day;
@@ -123,6 +126,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         private int endYear;//结尾年份
         private boolean cyclic = false;//是否循环
         private boolean cancelable = true;//是否能取消
+        private boolean confirmCancelable = true;//点击确认按钮是否能取消
 
         private String label_year, label_month, label_day, label_hours, label_mins, label_seconds;//单位
 
@@ -131,6 +135,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
             this.context = context;
             this.timeSelectListener = listener;
         }
+
 
         //Option
         public Builder setType(Type type) {
@@ -216,6 +221,11 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
 
         public Builder setOutSideCancelable(boolean cancelable) {
             this.cancelable = cancelable;
+            return this;
+        }
+
+        public Builder setConfirmCancelable(boolean confirmCancelable) {
+            this.confirmCancelable = confirmCancelable;
             return this;
         }
 
@@ -325,9 +335,14 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
                 try {
                     Date date = WheelTime.dateFormat.parse(wheelTime.getTime());
                     timeSelectListener.onTimeSelect(date, v);
+                    if (confirmCancelable) {
+                        dismiss();
+                    }
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+            } else {
+                dismiss();
             }
         }
     }
