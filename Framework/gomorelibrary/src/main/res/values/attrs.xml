@@ -24,4 +24,12 @@
         <attr name="pivotY" format="fraction" />
     </declare-styleable>
 
+    <!--首页-底部导航栏自定义view属性-->
+    <declare-styleable name="BottomTabView">
+        <attr name="bottom_icon" format="reference"/>
+        <attr name="bottom_color" format="color"/>
+        <attr name="bottom_text" format="string"/>
+        <attr name="bottom_text_size" format="dimension"/>
+    </declare-styleable>
+
 </resources>
