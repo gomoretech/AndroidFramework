@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.gomore.gomorelibrary.view.viewpager.HorizontalViewPager
+        android:id="@+id/viewpager_home"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/bgColor_default"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <com.gomore.gomorelibrary.view.BottomTabView
+            android:id="@+id/bottomTab_account"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            app:bottom_color="@color/colorAccent"
+            app:bottom_icon="@mipmap/tab_account_normal"
+            app:bottom_text="账本"
+            app:bottom_text_size="13dp" />
+
+        <com.gomore.gomorelibrary.view.BottomTabView
+            android:id="@+id/bottomTab_plan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            app:bottom_color="@color/colorAccent"
+            app:bottom_icon="@mipmap/tab_plan_normal"
+            app:bottom_text="计划"
+            app:bottom_text_size="13dp" />
+
+        <com.gomore.gomorelibrary.view.BottomTabView
+            android:id="@+id/bottomTab_self"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            app:bottom_color="@color/colorAccent"
+            app:bottom_icon="@mipmap/tab_self_normal"
+            app:bottom_text="我的"
+            app:bottom_text_size="13dp" />
+    </LinearLayout>
+
+</LinearLayout>

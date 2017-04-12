@@ -42,3 +42,16 @@
     ——JackJsonUtils: 实体model何Json的转化工具
     ——NetSpeed: 实时网速监测工具
     ——SystemTool: 系统信息工具类
+
+4.仿微信底部菜单控件
+
+    ——BottomTabView 仿微信底部菜单，配合ViewPager使用，滑动时颜色渐变
+
+5.自定义ViewPager
+
+    ——VerticalViewPager 纵向滑动ViewPager
+    ——HorizontalViewPager 横向滑动ViewPager
+
+    FragmentViewPagerAdapter adapter = new FragmentViewPagerAdapter(getSupportFragmentManager(),  new ArrayList<Fragment>());
+    viewPager.setAdapter(adapter);
+    viewPager.setViewpagerAnimation(HorizontalViewPager.VIEWPAGER_ANIMATION_ZOOMOUT);//设置ViewPager切换动画
