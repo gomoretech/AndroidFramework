@@ -66,12 +66,8 @@
 
 ### 六、版本检测升级（更新）库(支持通知栏显示，可设置静默下载)
 
-1. 自定义service继承 `VersionService `，实现其中的 `onResponses(VersionService service, String response)`抽象方法.
+1. 自定义service继承 `VersionService `，实现其中的 `onResponses(VersionService service, String response)`抽象方法.该方法主要是请求版本接口的回调，由于不同的使用者版本检测接口返回数据类型不一致，所以你需要自己解析数据，判断版本号之后调用升级对话框，如果使用库默认的界面直接调用如下方法: `service.showVersionDialog(downloadUrl,title,updateMsg )`
 
-该方法主要是请求版本接口的回调，由于不同的使用者版本检测接口返回数据类型不一致，所以你需要自己解析数据，判断版本号之后调用升级对话框，如果使用库默认的界面直接调用如下方法: `service.showVersionDialog(downloadUrl,title,updateMsg )`
-
-示例代码:
-      
         if (serverVersion > clientVersion) {
     	     //传入下载地址，以及版本更新消息，bundle可附带更多信息
     	    service.showVersionDialog(downloadUrl,title,updateMsg,bundle);
