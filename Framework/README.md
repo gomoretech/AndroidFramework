@@ -1,4 +1,4 @@
-# Framework
+# Framework[ ![Download](https://api.bintray.com/packages/smilefei/maven/AndroidFramework/images/download.svg) ](https://bintray.com/smilefei/maven/AndroidFramework)
 
 
 ## 勾芒科技公司安卓项目依赖框架
@@ -95,3 +95,8 @@
 调用父类`getVersionTitle()` ,`getVersionUpdateMsg()`,`getVersionParamBundle()`方法,这是从service传过来的值，可以在自定义界面使用
 
 使用详情具体见：(https://github.com/AlexLiuSheng/CheckVersionLib)
+
+
+
+### android studio导入
+`compile 'com.gomorelibrary.AndroidFramework.1.1.5'`
