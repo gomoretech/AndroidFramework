@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 
 
@@ -92,23 +91,6 @@ public class FileTools {
     }
 
 
-    public void writeSDFile2(String content, String name) {
-        FileWriter fwriter = null;
-        try {
-            fwriter = new FileWriter(name);
-            fwriter.write(content);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } finally {
-            try {
-                fwriter.flush();
-                fwriter.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
-
     /**
      * 读取SD卡中文本文件
      *
@@ -170,4 +152,20 @@ public class FileTools {
             file.delete();
         }
     }
+
+    public static String getDownloadApkCachePath() {
+        String appCachePath = null;
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            appCachePath = Environment.getExternalStorageDirectory() + "/VersionPath/";
+        } else {
+            appCachePath = Environment.getDataDirectory().getPath() + "/VersionPath/";
+        }
+        File file = new File(appCachePath);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        return appCachePath;
+    }
+
+
 }

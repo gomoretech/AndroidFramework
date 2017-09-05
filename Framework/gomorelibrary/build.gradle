@@ -33,7 +33,7 @@ publish {
     userOrg = 'smilefei'      //bintray注册的用户名
     groupId = 'com.gomorelibrary'         //compile引用时的第1部分groupId
     artifactId = 'AndroidFramework'     //compile引用时的第2部分项目名
-    publishVersion = '1.1.0'    //compile引用时的第3部分版本号
+    publishVersion = '1.1.5'    //compile引用时的第3部分版本号
     desc = 'This is gomore android library '
     website = 'https://github.com/gomoretech/AndroidFramework'
 }
@@ -41,8 +41,7 @@ publish {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.pnikosis:materialish-progress:1.7'
-    compile files('libs/jackson-all-1.9.2.jar')
-
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
 }
