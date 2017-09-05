@@ -82,11 +82,12 @@
         VersionParams.Builder builder = new VersionParams.Builder()
                  .setRequestUrl("请求服务器版本信息的接口地址")
                  .setService(DemoService.class);
-
+        //可配置通知栏图标
+        DownloadManager.NotificationIcon = R.mipmap.palmmall_launcher_icon;
         AllenChecker.startVersionCheck(this, builder.build());
     ```
 
-3. 可自定义升级弹框，只需创建一个继承自`VersionDialogActivity`的Activity,Activity设置Theme为透明
+3. 可自定义升级弹框，只需创建一个继承自`VersionDownloadManager.NotificationIcon = R.mipmap.palmmall_launcher_icon;DialogActivity`的Activity,Activity设置Theme为透明
 
      android:theme="@style/versionCheckLibvtransparentTheme"`
 

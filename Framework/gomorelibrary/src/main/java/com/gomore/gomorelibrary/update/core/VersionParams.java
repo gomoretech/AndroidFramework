@@ -3,7 +3,6 @@ package com.gomore.gomorelibrary.update.core;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.gomore.gomorelibrary.R;
 import com.gomore.gomorelibrary.update.core.http.HttpHeaders;
 import com.gomore.gomorelibrary.update.core.http.HttpParams;
 import com.gomore.gomorelibrary.update.core.http.HttpRequestMethod;
@@ -13,7 +12,6 @@ import com.gomore.gomorelibrary.utils.FileTools;
 public class VersionParams implements Parcelable {
     private String requestUrl;
     private String downloadAPKPath;
-    private int notificationIcon;
     private HttpHeaders httpHeaders;
     private long pauseRequestTime;
     private HttpRequestMethod requestMethod;
@@ -37,10 +35,6 @@ public class VersionParams implements Parcelable {
 
     public String getDownloadAPKPath() {
         return downloadAPKPath;
-    }
-
-    public int getNotificationIcon() {
-        return notificationIcon;
     }
 
     public HttpHeaders getHttpHeaders() {
@@ -81,7 +75,6 @@ public class VersionParams implements Parcelable {
 
         public Builder() {
             params = new VersionParams();
-            params.notificationIcon = R.mipmap.ic_launcher;
             params.downloadAPKPath = FileTools.getDownloadApkCachePath();
             params.pauseRequestTime = 1000 * 30;
             params.requestMethod = HttpRequestMethod.GET;
@@ -93,11 +86,6 @@ public class VersionParams implements Parcelable {
 
         public Builder setRequestUrl(String requestUrl) {
             params.requestUrl = requestUrl;
-            return this;
-        }
-
-        public Builder setNotificationIcon(int notificationIcon) {
-            params.notificationIcon = notificationIcon;
             return this;
         }
 

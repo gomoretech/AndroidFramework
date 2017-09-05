@@ -29,6 +29,7 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 
 public class DownloadManager {
     private static int lastProgress = 0;
+    public static int NotificationIcon = R.mipmap.ic_launcher;
 
     public static void downloadAPK(final Context context, String url, final VersionParams versionParams, final DownloadListener listener) {
         url = url.trim();
@@ -59,7 +60,7 @@ public class DownloadManager {
         intent.putExtra("isRetry", false);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
         builder.setContentIntent(pendingIntent);
-        builder.setSmallIcon(versionParams.getNotificationIcon());
+        builder.setSmallIcon(NotificationIcon);
         builder.setContentTitle(context.getString(R.string.app_name));
         builder.setTicker(context.getString(R.string.versionchecklib_downloading));
 

@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 
 import com.gomore.framework.upload.CustomVersionDialogActivity;
 import com.gomore.framework.upload.DemoService;
+import com.gomore.gomorelibrary.update.core.DownloadManager;
 import com.gomore.gomorelibrary.update.core.UpdateChecker;
 import com.gomore.gomorelibrary.update.core.VersionDialogActivity;
 import com.gomore.gomorelibrary.update.core.VersionParams;
@@ -54,9 +55,8 @@ public class UpdateActivity extends AppCompatActivity {
 //                .setRequestMethod(requestMethod)
 //                .setRequestParams(httpParams)
                 .setRequestUrl("http://gomoredev.natapp4.cc/palmmall-server/rest/ipapk?type=apk")
-                .setNotificationIcon(R.mipmap.ic_launcher)
                 .setService(DemoService.class);
-
+        DownloadManager.NotificationIcon = R.mipmap.palmmall_launcher_icon;
         stopService(new Intent(this, DemoService.class));
         switch (view.getId()) {
             case R.id.sendbtn:
