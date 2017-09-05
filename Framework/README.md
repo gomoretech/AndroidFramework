@@ -9,7 +9,7 @@
 
 
 
-一、仿iOS的PickerView控件，有时间选择和选项选择并支持一二三级联动效果
+### 一、仿iOS的PickerView控件，有时间选择和选项选择并支持一二三级联动效果
 
     ——TimePickerView  时间选择器，支持年月日时分，年月日，年月，时分等格式
     ——OptionsPickerView  选项选择器，支持一，二，三级选项选择，并且可以设置是否联动
@@ -18,7 +18,7 @@
 
 
 
-二、引用比较酷炫的SweetAlertDialog对话框
+### 二、引用比较酷炫的SweetAlertDialog对话框
 
 ——Usage
 
@@ -32,7 +32,7 @@
 
 
 
-三、新增工具模块
+### 三、新增工具模块
 
     ——DateUtil: 日期处理工具
     ——StringUtils: 字符串处理工具类
@@ -47,13 +47,13 @@
 
 
 
-四、仿微信底部菜单控件
+### 四、仿微信底部菜单控件
 
     ——BottomTabView 仿微信底部菜单，配合ViewPager使用，滑动时颜色渐变
 
 
 
-五、自定义ViewPager
+### 五、自定义ViewPager
 
     ——VerticalViewPager 纵向滑动ViewPager
     ——HorizontalViewPager 横向滑动ViewPager
@@ -64,20 +64,19 @@
 
 
 
-六、版本检测升级（更新）库(支持通知栏显示，可设置静默下载)
+### 六、版本检测升级（更新）库(支持通知栏显示，可设置静默下载)
 
-1.自定义service继承 `VersionService `，实现其中的 `onResponses(VersionService service, String response)`抽象方法.
+1. 自定义service继承 `VersionService `，实现其中的 `onResponses(VersionService service, String response)`抽象方法.
 
 该方法主要是请求版本接口的回调，由于不同的使用者版本检测接口返回数据类型不一致，所以你需要自己解析数据，判断版本号之后调用升级对话框，如果使用库默认的界面直接调用如下方法: `service.showVersionDialog(downloadUrl,title,updateMsg )`
 
 示例代码:
-              
-    if (serverVersion > clientVersion) {
-    	 //传入下载地址，以及版本更新消息，bundle可附带更多信息
-    	 service.showVersionDialog(downloadUrl,title,updateMsg,bundle);
-    }
+       if (serverVersion > clientVersion) {
+    	     //传入下载地址，以及版本更新消息，bundle可附带更多信息
+    	    service.showVersionDialog(downloadUrl,title,updateMsg,bundle);
+        }
 
-2.在任意地方开启自定义service，并传入`VersionParam`
+2. 在任意地方开启自定义service，并传入`VersionParam`
 
     ```
         VersionParams.Builder builder = new VersionParams.Builder()
@@ -87,7 +86,7 @@
         AllenChecker.startVersionCheck(this, builder.build());
     ```
 
-3.可自定义升级弹框，只需创建一个继承自`VersionDialogActivity`的Activity,Activity设置Theme为透明
+3. 可自定义升级弹框，只需创建一个继承自`VersionDialogActivity`的Activity,Activity设置Theme为透明
 
      android:theme="@style/versionCheckLibvtransparentTheme"`
 
