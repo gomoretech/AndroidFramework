@@ -71,7 +71,8 @@
 该方法主要是请求版本接口的回调，由于不同的使用者版本检测接口返回数据类型不一致，所以你需要自己解析数据，判断版本号之后调用升级对话框，如果使用库默认的界面直接调用如下方法: `service.showVersionDialog(downloadUrl,title,updateMsg )`
 
 示例代码:
-       if (serverVersion > clientVersion) {
+      
+        if (serverVersion > clientVersion) {
     	     //传入下载地址，以及版本更新消息，bundle可附带更多信息
     	    service.showVersionDialog(downloadUrl,title,updateMsg,bundle);
         }
@@ -87,7 +88,7 @@
         AllenChecker.startVersionCheck(this, builder.build());
     ```
 
-3. 可自定义升级弹框，只需创建一个继承自`VersionDownloadManager.NotificationIcon = R.mipmap.palmmall_launcher_icon;DialogActivity`的Activity,Activity设置Theme为透明
+3. 可自定义升级弹框，只需创建一个继承自DialogActivity`的Activity,Activity设置Theme为透明
 
      android:theme="@style/versionCheckLibvtransparentTheme"`
 
