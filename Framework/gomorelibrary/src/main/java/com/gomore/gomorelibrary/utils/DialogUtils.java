@@ -35,7 +35,7 @@ public class DialogUtils {
      */
     public static void confirmDialog(Context context, String title, String content,
                                      SweetAlertDialog.OnSweetClickListener confirmListener, int dialogType) {
-        confirmDialog(context, title, content, "取消", "确定", confirmListener, dialogType);
+        confirmDialog(context, title, content, null, null, confirmListener, dialogType);
     }
 
     /**
@@ -58,6 +58,15 @@ public class DialogUtils {
         }
         if (sweetAlertDialog == null) {
             sweetAlertDialog = new SweetAlertDialog(context, dialogType);
+        }
+        if (title == null) {
+            title = "提示";
+        }
+        if (cancel == null) {
+            title = "取消";
+        }
+        if (confirm == null) {
+            title = "确定";
         }
         sweetAlertDialog.setTitleText(title)
                 .setContentText(content)
@@ -92,6 +101,15 @@ public class DialogUtils {
         if (sweetAlertDialog == null) {
             sweetAlertDialog = new SweetAlertDialog(context, dialogType);
         }
+        if (title == null) {
+            title = "提示";
+        }
+        if (cancel == null) {
+            title = "取消";
+        }
+        if (confirm == null) {
+            title = "确定";
+        }
         sweetAlertDialog.setTitleText(title)
                 .setContentText(content)
                 .setCancelText(cancel)
@@ -106,17 +124,34 @@ public class DialogUtils {
     /**
      * 成功提示框
      *
+     * @param content
+     */
+    public static void successDialog(Context context, String content) {
+        successDialog(context, null, content, null);
+    }
+
+    /**
+     * 成功提示框
+     *
      * @param title
+     * @param content
      * @param confirm
      */
-    public static void successDialog(Context context, String title, String confirm) {
+    public static void successDialog(Context context, String title, String content, String confirm) {
         if (sweetAlertDialog != null && !sweetAlertDialog.isShowing()) {
             sweetAlertDialog = null;
         }
         if (sweetAlertDialog == null) {
             sweetAlertDialog = new SweetAlertDialog(context, SweetAlertDialog.SUCCESS_TYPE);
         }
+        if (title == null) {
+            title = "提示";
+        }
+        if (confirm == null) {
+            title = "确定";
+        }
         sweetAlertDialog.setTitleText(title)
+                .setContentText(content)
                 .setConfirmText(confirm);
         if (!sweetAlertDialog.isShowing()) {
             sweetAlertDialog.show();
@@ -126,17 +161,34 @@ public class DialogUtils {
     /**
      * 错误提示框
      *
+     * @param content
+     */
+    public static void errorDialog(Context context, String content) {
+        errorDialog(context, null, content, null);
+    }
+
+    /**
+     * 错误提示框
+     *
      * @param title
+     * @param content
      * @param confirm
      */
-    public static void errorDialog(Context context, String title, String confirm) {
+    public static void errorDialog(Context context, String title, String content, String confirm) {
         if (sweetAlertDialog != null && !sweetAlertDialog.isShowing()) {
             sweetAlertDialog = null;
         }
         if (sweetAlertDialog == null) {
             sweetAlertDialog = new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE);
         }
+        if (title == null) {
+            title = "提示";
+        }
+        if (confirm == null) {
+            title = "确定";
+        }
         sweetAlertDialog.setTitleText(title)
+                .setContentText(content)
                 .setConfirmText(confirm);
         if (!sweetAlertDialog.isShowing()) {
             sweetAlertDialog.show();
@@ -146,17 +198,33 @@ public class DialogUtils {
     /**
      * 警告提示框
      *
+     * @param content
+     */
+    public static void warningDialog(Context context, String content) {
+        warningDialog(context, null, content, null);
+    }
+
+    /**
+     * 警告提示框
+     *
      * @param title
      * @param confirm
      */
-    public static void warningDialog(Context context, String title, String confirm) {
+    public static void warningDialog(Context context, String title, String content, String confirm) {
         if (sweetAlertDialog != null && !sweetAlertDialog.isShowing()) {
             sweetAlertDialog = null;
         }
         if (sweetAlertDialog == null) {
             sweetAlertDialog = new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE);
         }
+        if (title == null) {
+            title = "提示";
+        }
+        if (confirm == null) {
+            title = "确定";
+        }
         sweetAlertDialog.setTitleText(title)
+                .setContentText(content)
                 .setConfirmText(confirm);
         if (!sweetAlertDialog.isShowing()) {
             sweetAlertDialog.show();
