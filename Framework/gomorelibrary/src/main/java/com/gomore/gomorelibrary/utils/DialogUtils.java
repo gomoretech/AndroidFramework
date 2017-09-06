@@ -6,12 +6,37 @@ import com.gomore.gomorelibrary.view.sweetdialog.SweetAlertDialog;
 
 /**
  * 常用的提示对话框
- *
+ * <p>
  * Created by Kennen on 2017/3/23.
  */
 public class DialogUtils {
 
     private static SweetAlertDialog sweetAlertDialog = null;
+
+    /**
+     * 确认对话框
+     *
+     * @param title           标题
+     * @param content         内容
+     * @param confirmListener 确认回调事件
+     */
+    public static void confirmDialog(Context context, String title, String content,
+                                     SweetAlertDialog.OnSweetClickListener confirmListener) {
+        confirmDialog(context, title, content, "取消", "确定", confirmListener, SweetAlertDialog.NORMAL_TYPE);
+    }
+
+    /**
+     * 确认对话框
+     *
+     * @param title           标题
+     * @param content         内容
+     * @param confirmListener 确认回调事件
+     * @param dialogType      对话框风格(NORMAL_TYPE, ERROR_TYPE, SUCCESS_TYPE, WARNING_TYPE, CUSTOM_IMAGE_TYPE, PROGRESS_TYPE)
+     */
+    public static void confirmDialog(Context context, String title, String content,
+                                     SweetAlertDialog.OnSweetClickListener confirmListener, int dialogType) {
+        confirmDialog(context, title, content, "取消", "确定", confirmListener, dialogType);
+    }
 
     /**
      * 确认对话框
