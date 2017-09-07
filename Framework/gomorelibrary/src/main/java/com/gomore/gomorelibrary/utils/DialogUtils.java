@@ -63,10 +63,10 @@ public class DialogUtils {
             title = "提示";
         }
         if (cancel == null) {
-            title = "取消";
+            cancel = "取消";
         }
         if (confirm == null) {
-            title = "确定";
+            confirm = "确定";
         }
         sweetAlertDialog.setTitleText(title)
                 .setContentText(content)
@@ -105,10 +105,10 @@ public class DialogUtils {
             title = "提示";
         }
         if (cancel == null) {
-            title = "取消";
+            cancel = "取消";
         }
         if (confirm == null) {
-            title = "确定";
+            confirm = "确定";
         }
         sweetAlertDialog.setTitleText(title)
                 .setContentText(content)
@@ -148,7 +148,7 @@ public class DialogUtils {
             title = "提示";
         }
         if (confirm == null) {
-            title = "确定";
+            confirm = "确定";
         }
         sweetAlertDialog.setTitleText(title)
                 .setContentText(content)
@@ -185,7 +185,7 @@ public class DialogUtils {
             title = "提示";
         }
         if (confirm == null) {
-            title = "确定";
+            confirm = "确定";
         }
         sweetAlertDialog.setTitleText(title)
                 .setContentText(content)
@@ -221,7 +221,7 @@ public class DialogUtils {
             title = "提示";
         }
         if (confirm == null) {
-            title = "确定";
+            confirm = "确定";
         }
         sweetAlertDialog.setTitleText(title)
                 .setContentText(content)
