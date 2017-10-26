@@ -36,7 +36,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
                         DialogUtils.closeLoadingDialog();
-                        DialogUtils.errorDialog(SampleActivity.this, "你真的low爆了!", "呵呵");
+                        DialogUtils.errorDialog(SampleActivity.this, "你真的low爆了!");
                     }
                 }, new SweetAlertDialog.OnSweetClickListener() {
                     @Override

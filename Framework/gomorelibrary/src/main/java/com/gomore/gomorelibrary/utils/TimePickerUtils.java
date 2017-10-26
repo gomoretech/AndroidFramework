@@ -1,8 +1,15 @@
 package com.gomore.gomorelibrary.utils;
 
 import android.content.Context;
+import android.view.View;
 
 import com.gomore.gomorelibrary.view.pickerview.TimePickerView;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import static com.gomore.gomorelibrary.utils.DateUtil.pattern;
 
 /**
  * 仿IOS模式的时间选择框
@@ -11,75 +18,66 @@ import com.gomore.gomorelibrary.view.pickerview.TimePickerView;
  */
 public class TimePickerUtils {
 
-    private static TimePickerView mTimePickerView = null;
-
     /**
-     * 显示时间选择对话框
-     *
-     * @param context
-     * @param selectListener
+     * 选择时间控件（点击确定后自动隐藏）
      */
-    public static void showTimeSelect(Context context, TimePickerView.OnTimeSelectListener selectListener) {
-        if (mTimePickerView != null && !mTimePickerView.isShowing()) {
-            mTimePickerView = null;
-        }
-        if (mTimePickerView == null) {
-            mTimePickerView = new TimePickerView.Builder(context, selectListener)
-                    .setLabel("年", "月", "日", "时", "分", "秒")
-                    .setType(TimePickerView.Type.ALL)
-                    .build();
-        }
-        if (!mTimePickerView.isShowing()) {
-            mTimePickerView.show();
-        }
+    public static void setTimeCancelable(Context context, final TimeSelectListener listener) {
+        //new boolean[]{true, true, true, false, false, false}  年/月/日/时/分/秒
+        setTimeCancelable(context, new boolean[]{true, true, true, false, false, false}, null, pattern, listener);
     }
 
     /**
-     * 显示时间选择对话框
-     *
-     * @param context
-     * @param type           // 五种选择模式，ALL, YEAR_MONTH_DAY, HOURS_MINS, MONTH_DAY_HOUR_MIN, YEAR_MONTH
-     *                       年月日时分秒，年月日，时分，月日时分，年月
-     * @param selectListener
+     * 选择时间控件（点击确定后自动隐藏）
      */
-    public static void showTimeSelect(Context context, TimePickerView.Type type, TimePickerView.OnTimeSelectListener selectListener) {
-        if (mTimePickerView != null && !mTimePickerView.isShowing()) {
-            mTimePickerView = null;
-        }
-        if (mTimePickerView == null) {
-            mTimePickerView = new TimePickerView.Builder(context, selectListener)
-                    .setLabel("年", "月", "日", "时", "分", "秒")
-                    .setType(type)
-                    .build();
-        }
-        if (!mTimePickerView.isShowing()) {
-            mTimePickerView.show();
-        }
+    public static void setTimeCancelable(Context context, boolean[] type, String title,
+                                         final String pattern, final TimeSelectListener listener) {
+        setTimeCancelable(context, type, title, null, pattern, listener);
     }
 
     /**
-     * 显示时间选择对话框
+     * 选择时间控件（点击确定后自动隐藏）
+     */
+    public static void setTimeCancelable(Context context, boolean[] type, String title,
+                                         Calendar date, final String pattern, final TimeSelectListener listener) {
+        setTimeCancelable(context, type, title, date, null, null, pattern, listener);
+    }
+
+
+    /**
+     * 选择时间控件（点击确定后自动隐藏）
      *
      * @param context
-     * @param type              // 五种选择模式，ALL, YEAR_MONTH_DAY, HOURS_MINS, MONTH_DAY_HOUR_MIN, YEAR_MONTH
-     *                          年月日时分秒，年月日，时分，月日时分，年月
-     * @param confirmCancelable //点击确认按钮是否取消该对话框(用于所选时间的校验)
-     * @param selectListener
+     * @param type     日期显示格式
+     * @param title    标题
+     * @param pattern  获得的日期类型
+     * @param listener
      */
-    public static void showTimeSelect(Context context, TimePickerView.Type type, boolean confirmCancelable,
-                                      TimePickerView.OnTimeSelectListener selectListener) {
-        if (mTimePickerView != null && !mTimePickerView.isShowing()) {
-            mTimePickerView = null;
-        }
-        if (mTimePickerView == null) {
-            mTimePickerView = new TimePickerView.Builder(context, selectListener)
-                    .setLabel("年", "月", "日", "时", "分", "秒")
-                    .setType(type)
-                    .setConfirmCancelable(confirmCancelable)
-                    .build();
-        }
-        if (!mTimePickerView.isShowing()) {
-            mTimePickerView.show();
-        }
+    public static void setTimeCancelable(Context context, boolean[] type, String title,
+                                         Calendar date, Calendar startDate, Calendar endDate, final String pattern, final TimeSelectListener listener) {
+        TimePickerView timePickerView = new TimePickerView.Builder(context, new TimePickerView.OnTimeSelectListener() {
+            @Override
+            public void onTimeSelect(Date date, View v) {
+                listener.selectDate(date);
+                SimpleDateFormat format;
+                if (pattern != null) {
+                    format = new SimpleDateFormat(pattern);
+                } else {
+                    format = new SimpleDateFormat("yyyy-MM-dd");
+                }
+                listener.selectDateString(format.format(date));
+            }
+        }).setType(type)//设置显示方式
+                .isCyclic(false)//是否循环滚动(默认false)
+                .setDate(date)
+                .setTitleText(title)
+                .setRangDate(startDate, endDate)
+                .build();
+        timePickerView.show();
+    }
+
+    public interface TimeSelectListener {
+        void selectDate(Date date);
+
+        void selectDateString(String date);
     }
 }
