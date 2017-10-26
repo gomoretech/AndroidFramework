@@ -1,34 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="com.gomore.framework.MainActivity">
 
-    <android.support.design.widget.AppBarLayout
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_Time"
+        android:layout_margin="10dp"
+        android:text="@string/picker_time"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="50dp"/>
+    <Button
+        android:id="@+id/btn_Options"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/tvTime"
+        android:text="@string/picker_province"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <Button
+        android:id="@+id/btn_CustomTime"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/tvTime"
+        android:text="@string/picker_custom_time"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 
-    </android.support.design.widget.AppBarLayout>
+    <Button
+        android:id="@+id/btn_CustomOptions"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/tvTime"
+        android:text="@string/picker_custom_province"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 
-    <include layout="@layout/content_main" />
+    <Button
+        android:id="@+id/btn_no_linkage"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/tvTime"
+        android:text="条件选择器(不联动)"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
+    <Button
+        android:id="@+id/btn_GotoJsonData"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/tvTime"
+        android:text="省市区Json文件解析示例"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 
-</android.support.design.widget.CoordinatorLayout>
+    <Button
+        android:id="@+id/btn_fragment"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/tvTime"
+        android:text="自定义控件父容器"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+    <Button
+        android:id="@+id/TimePickerUtils"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/tvTime"
+        android:text="基类使用"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+</LinearLayout>
