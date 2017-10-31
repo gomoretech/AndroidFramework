@@ -101,6 +101,7 @@
 ### android studio导入
 
 Step 1. Add the JitPack repository to your build file
+
 	allprojects {
 		repositories {
 			...
@@ -110,6 +111,7 @@ Step 1. Add the JitPack repository to your build file
 
 
 Step 2. Add the dependency
+
 dependencies {
 	        compile 'com.github.gomoretech:AndroidFramework:v1.2.1'
 	}
