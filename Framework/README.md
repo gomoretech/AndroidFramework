@@ -1,4 +1,4 @@
-# Framework[ ![Download](https://api.bintray.com/packages/smilefei/maven/AndroidFramework/images/download.svg) ](https://bintray.com/smilefei/maven/AndroidFramework)
+# Framework[![](https://jitpack.io/v/gomoretech/AndroidFramework.svg)](https://jitpack.io/#gomoretech/AndroidFramework)
 
 
 ## 勾芒科技公司安卓项目依赖框架
@@ -99,4 +99,17 @@
 
 
 ### android studio导入
-`compile 'com.gomorelibrary.AndroidFramework.1.1.5'`
+
+Step 1. Add the JitPack repository to your build file
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+
+Step 2. Add the dependency
+dependencies {
+	        compile 'com.github.gomoretech:AndroidFramework:v1.2.1'
+	}
