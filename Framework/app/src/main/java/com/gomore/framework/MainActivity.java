@@ -40,6 +40,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private ArrayList<String> clothes = new ArrayList<>();
     private ArrayList<String> computer = new ArrayList<>();
 
+    TextView txt_select_time;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -178,11 +180,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
          * 2.因为系统Calendar的月份是从0-11的,所以如果是调用Calendar的set方法来设置时间,月份的范围也要是从0-11
          * setRangDate方法控制起始终止时间(如果不设置范围，则使用默认时间1900-2100年，此段代码可注释)
          */
+
         Calendar selectedDate = Calendar.getInstance();//系统当前时间
-        Calendar startDate = Calendar.getInstance();
-        startDate.set(2014, 1, 23);
-        Calendar endDate = Calendar.getInstance();
-        endDate.set(2027, 2, 28);
+        final Calendar startDate = Calendar.getInstance();
+        startDate.set(startDate.get(Calendar.YEAR), startDate.get(Calendar.MONTH), startDate.get(
+                Calendar.DAY_OF_MONTH), startDate.get(Calendar.HOUR_OF_DAY), startDate.get(Calendar.MINUTE), startDate.get(Calendar.SECOND));
+        final Calendar endDate = Calendar.getInstance();
+        endDate.set(endDate.get(Calendar.YEAR), endDate.get(Calendar.MONTH), endDate.get(
+                Calendar.DAY_OF_MONTH) + 90, endDate.get(Calendar.HOUR_OF_DAY), endDate.get(Calendar.MINUTE), endDate.get(Calendar.SECOND));
         //时间选择器 ，自定义布局
         pvCustomTime = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
             @Override
@@ -211,11 +216,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
                     @Override
                     public void customLayout(View v) {
-                        TextView txt_select_time = (TextView) v.findViewById(R.id.txt_select_time);
-
-                        final TextView tvSubmit = (TextView) v.findViewById(R.id.tv_finish);
+                        txt_select_time = (TextView) v.findViewById(R.id.txt_select_time);
+                        TextView txtSubmit = (TextView) v.findViewById(R.id.tv_finish);
                         ImageView ivCancel = (ImageView) v.findViewById(R.id.iv_cancel);
-                        tvSubmit.setOnClickListener(new View.OnClickListener() {
+                        txtSubmit.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 pvCustomTime.returnData();
@@ -230,7 +234,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
                         });
                     }
                 })
-                .setType(new boolean[]{true, true, true, false, false, false})
+                .setWheelViewRollListener(new TimePickerView.OnWheelViewRollListener() {
+                    @Override
+                    public void onWheelViewRoll(Date date) {
+                        if (date.getTime() < startDate.getTime().getTime()) {
+                            pvCustomTime.setTime(startDate);
+                        } else if (date.getTime() > endDate.getTime().getTime()) {
+                            pvCustomTime.setTime(endDate);
+                        } else {
+                            txt_select_time.setText(getTime(date));
+                        }
+                    }
+                })
+                .setType(new boolean[]{true, true, true, true, true, true})
                 .isCenterLabel(false) //是否只显示中间选中项的label文字，false则每项item全部都带有label。
                 .setDividerColor(Color.RED)
                 .build();

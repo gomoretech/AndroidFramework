@@ -3,14 +3,17 @@ package com.gomore.gomorelibrary.view.pickerview.view;
 import android.view.View;
 
 import com.gomore.gomorelibrary.R;
+import com.gomore.gomorelibrary.view.pickerview.TimePickerView;
 import com.gomore.gomorelibrary.view.pickerview.adapter.NumericWheelAdapter;
 import com.gomore.gomorelibrary.view.pickerview.lib.WheelView;
 import com.gomore.gomorelibrary.view.pickerview.listener.OnItemSelectedListener;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -26,6 +29,7 @@ public class WheelTime {
     private int gravity;
 
     private boolean[] type;
+    TimePickerView.OnWheelViewRollListener wheelViewRollListener;
     private static final int DEFAULT_START_YEAR = 1900;
     private static final int DEFAULT_END_YEAR = 2100;
     private static final int DEFAULT_START_MONTH = 1;
@@ -60,12 +64,13 @@ public class WheelTime {
         setView(view);
     }
 
-    public WheelTime(View view, boolean[] type, int gravity, int textSize) {
+    public WheelTime(View view, boolean[] type, int gravity, int textSize, TimePickerView.OnWheelViewRollListener wheelViewRollListener) {
         super();
         this.view = view;
         this.type = type;
         this.gravity = gravity;
         this.textSize = textSize;
+        this.wheelViewRollListener = wheelViewRollListener;
         setView(view);
     }
 
@@ -696,5 +701,32 @@ public class WheelTime {
         wv_hours.isCenterLabel(isCenterLabel);
         wv_mins.isCenterLabel(isCenterLabel);
         wv_seconds.isCenterLabel(isCenterLabel);
+    }
+
+
+    public void setWheelViewSlideEvent() {
+        OnWheelViewSlideListener onWheelViewSlideListener = new OnWheelViewSlideListener() {
+            @Override
+            public void onWheelViewSlide() {
+                if (wheelViewRollListener != null) {
+                    try {
+                        Date date = WheelTime.dateFormat.parse(getTime());
+                        wheelViewRollListener.onWheelViewRoll(date);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        wv_day.setOnWheelViewSlideListener(onWheelViewSlideListener);
+        wv_month.setOnWheelViewSlideListener(onWheelViewSlideListener);
+        wv_year.setOnWheelViewSlideListener(onWheelViewSlideListener);
+        wv_hours.setOnWheelViewSlideListener(onWheelViewSlideListener);
+        wv_mins.setOnWheelViewSlideListener(onWheelViewSlideListener);
+        wv_seconds.setOnWheelViewSlideListener(onWheelViewSlideListener);
+    }
+
+    public interface OnWheelViewSlideListener {
+        void onWheelViewSlide();
     }
 }

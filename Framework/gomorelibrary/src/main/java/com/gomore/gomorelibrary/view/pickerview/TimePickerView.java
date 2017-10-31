@@ -34,6 +34,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
     private Button btnSubmit, btnCancel; //确定、取消按钮
     private TextView tvTitle;//标题
     private OnTimeSelectListener timeSelectListener;//回调接口
+    private OnWheelViewRollListener wheelViewRollListener;//滑动监听事件
     private int gravity = Gravity.CENTER;//内容显示位置 默认居中
     private boolean[] type;// 显示类型
 
@@ -82,6 +83,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
     public TimePickerView(Builder builder) {
         super(builder.context);
         this.timeSelectListener = builder.timeSelectListener;
+        this.wheelViewRollListener = builder.wheelViewRollListener;
         this.gravity = builder.gravity;
         this.type = builder.type;
         this.Str_Submit = builder.Str_Submit;
@@ -130,6 +132,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         private CustomListener customListener;
         private Context context;
         private OnTimeSelectListener timeSelectListener;
+        private OnWheelViewRollListener wheelViewRollListener;
         private boolean[] type = new boolean[]{true, true, true, true, true, true};//显示类型 默认全部显示
         private int gravity = Gravity.CENTER;//内容显示位置 默认居中
 
@@ -176,6 +179,11 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         public Builder(Context context, OnTimeSelectListener listener) {
             this.context = context;
             this.timeSelectListener = listener;
+        }
+
+        public Builder setWheelViewRollListener(OnWheelViewRollListener wheelViewRollListener) {
+            this.wheelViewRollListener = wheelViewRollListener;
+            return this;
         }
 
         //Option
@@ -441,7 +449,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
 
         timePickerView.setBackgroundColor(Color_Background_Wheel == 0 ? bgColor_default : Color_Background_Wheel);
 
-        wheelTime = new WheelTime(timePickerView, type, gravity, Size_Content);
+        wheelTime = new WheelTime(timePickerView, type, gravity, Size_Content, wheelViewRollListener);
 
         if (startYear != 0 && endYear != 0 && startYear <= endYear) {
             setRange();
@@ -468,6 +476,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         wheelTime.setTextColorOut(textColorOut);
         wheelTime.setTextColorCenter(textColorCenter);
         wheelTime.isCenterLabel(isCenterLabel);
+        wheelTime.setWheelViewSlideEvent();
     }
 
 
@@ -531,8 +540,23 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
             minute = date.get(Calendar.MINUTE);
             seconds = date.get(Calendar.SECOND);
         }
+        wheelTime.setPicker(year, month, day, hours, minute, seconds);
+    }
 
-
+    /**
+     * 设置选中时间,默认选中当前时间
+     */
+    public void setTime(Calendar calendar) {
+        if (calendar == null) {
+            return;
+        }
+        int year, month, day, hours, minute, seconds;
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+        hours = calendar.get(Calendar.HOUR_OF_DAY);
+        minute = calendar.get(Calendar.MINUTE);
+        seconds = calendar.get(Calendar.SECOND);
         wheelTime.setPicker(year, month, day, hours, minute, seconds);
     }
 
@@ -559,6 +583,10 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
 
     public interface OnTimeSelectListener {
         void onTimeSelect(Date date, View v);
+    }
+
+    public interface OnWheelViewRollListener {
+        void onWheelViewRoll(Date date);
     }
 
     @Override
