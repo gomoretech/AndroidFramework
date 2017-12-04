@@ -29,4 +29,8 @@
     <string name="versionchecklib_progress">%d/100</string>
     <string name="versionchecklib_write_permission_deny">下载安装包需要读写文件权限。</string>
     <string name="versionchecklib_download_apkname">%s.apk</string>
+
+
+    <string name="search_hint">Search</string>
+
 </resources>
