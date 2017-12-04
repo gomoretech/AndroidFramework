@@ -14,15 +14,10 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
+        </activity>
         <activity android:name=".pickerview.FragmentTestActivity" />
         <activity android:name=".pickerview.JsonDataActivity" />
-
         <activity
             android:name=".SampleActivity"
             android:label="@string/title_activity_main"
@@ -35,22 +30,25 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".HomeActivity">
-
-        </activity>
-
+        <activity android:name=".HomeActivity"></activity>
 
         <service
             android:name=".upload.DemoService"
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".UpdateActivity">
-
-        </activity>
+        <activity android:name=".UpdateActivity"></activity>
         <activity
             android:name=".upload.CustomVersionDialogActivity"
-            android:theme="@style/versionCheckTransparentTheme"></activity>
+            android:theme="@style/versionCheckTransparentTheme" />
+        <activity
+            android:name=".SearchActivity"
+            android:theme="@style/AppTheme.Search">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

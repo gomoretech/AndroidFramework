@@ -97,6 +97,55 @@
 使用详情具体见：(https://github.com/AlexLiuSheng/CheckVersionLib)
 
 
+### 七、标题栏查询搜索 -> MaterialSearchView
+
+ ——Usage
+
+        布局：
+
+        <FrameLayout
+            android:id="@+id/toolbar_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/theme_primary" />
+            <com.gomore.gomorelibrary.view.searchview.MaterialSearchView
+                android:id="@+id/search_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </FrameLayout>
+
+        代码：
+
+        MaterialSearchView searchView = (MaterialSearchView) findViewById(R.id.search_view);
+        	searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        //Do some magic
+                        return false;
+                    }
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        //Do some magic
+                        return false;
+                    }
+                });
+                searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
+                    @Override
+                    public void onSearchViewShown() {
+                        //Do some magic
+                    }
+                    @Override
+                    public void onSearchViewClosed() {
+                        //Do some magic
+                    }
+                });
+
+ 使用详情具体见：(https://github.com/MiguelCatalan/MaterialSearchView)
+
 
 ### android studio导入
 
@@ -113,5 +162,5 @@ Step 1. Add the JitPack repository to your build file
 Step 2. Add the dependency
 
 dependencies {
-	        compile 'com.github.gomoretech:AndroidFramework:v1.2.1'
+	        compile 'com.github.gomoretech:AndroidFramework:v1.2.2'
 	}
