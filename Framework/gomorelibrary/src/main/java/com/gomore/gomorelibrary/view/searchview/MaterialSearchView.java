@@ -265,7 +265,7 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
 
     private void onSubmitQuery() {
         CharSequence query = mSearchSrcTextView.getText();
-        if (query != null && TextUtils.getTrimmedLength(query) > 0) {
+        if (query != null) {
             if (mOnQueryChangeListener == null || !mOnQueryChangeListener.onQueryTextSubmit(query.toString())) {
                 closeSearch();
                 mSearchSrcTextView.setText(null);
@@ -313,8 +313,16 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
         mSearchTopBar.setBackgroundColor(color);
     }
 
+    public EditText getSearchEditText() {
+        return mSearchSrcTextView;
+    }
+
     public void setTextColor(int color) {
         mSearchSrcTextView.setTextColor(color);
+    }
+
+    public void setTextSize(float size) {
+        mSearchSrcTextView.setTextSize(size);
     }
 
     public void setHintTextColor(int color) {

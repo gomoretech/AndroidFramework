@@ -162,5 +162,5 @@ Step 1. Add the JitPack repository to your build file
 Step 2. Add the dependency
 
 dependencies {
-	        compile 'com.github.gomoretech:AndroidFramework:v1.2.2'
+	        compile 'com.github.gomoretech:AndroidFramework:1.2.3'
 	}
